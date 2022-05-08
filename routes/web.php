@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\MainPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\ProductsController;
 
 Route::get('/', function () {
     return view('main');
-});
+}) -> name('home');
 
 Route::get('/users', function() {
     return 'Welcome to the users page';
@@ -35,8 +36,9 @@ Route::get('/jsonObject', function() {
 });
 
 Route::get('/products', [ProductsController::class, 'index']) -> name('products');
-
 Route::get('/products/{name}',
     [ProductsController::class, 'show']) -> where([
         'name' => '[a-zA-Z]+',
     ]);
+
+Route::get('about', [MainPageController::class, 'about']) -> name('about');
