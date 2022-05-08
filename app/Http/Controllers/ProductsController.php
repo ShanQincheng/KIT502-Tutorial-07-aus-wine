@@ -19,8 +19,14 @@ class ProductsController extends Controller
         return view('products.index', compact('data'));
     }
 
-    public function show($id) {
-        // get id in the URL
-        return $id;
+    public function show($name) {
+        $data = [
+          'Apple' => 'iPhone',
+          'Samsung' => 'galaxy'
+        ];
+
+        return view('products.index', [
+            'product' => $data[$name] ?? 'Product ' .$name. ' dost not exit'
+        ]);
     }
 }

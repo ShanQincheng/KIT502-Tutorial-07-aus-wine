@@ -11,10 +11,6 @@
 <body>
     <h1>Products</h1>
     <p>This is a Products page</p>
-{{--    <p>{{ $greeting }}</p>--}}
-{{--    <p>{{ $message }}</p>--}}
-    @foreach($data as $item)
-        <p>{{ $item }}</p>
-    @endforeach
+    <p>{{ $product }}</p>
 </body>
 </html>
