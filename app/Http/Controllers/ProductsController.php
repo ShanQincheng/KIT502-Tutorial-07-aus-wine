@@ -12,11 +12,14 @@ class ProductsController extends Controller
         //return view ('products.index', compact('greeting', 'message'));
         //return view('products.index') -> with('greeting', $greeting) -> with('message', $message);
 
-        $data = [
-            '1. Product' => 'MacBook',
-            '2. Product' => 'iPad'
-        ];
-        return view('products.index', compact('data'));
+//        $data = [
+//            '1. Product' => 'MacBook',
+//            '2. Product' => 'iPad'
+//        ];
+//        return view('products.index', compact('data'));
+
+        print_r(route('products'));
+        return view('products.index');
     }
 
     public function show($name) {

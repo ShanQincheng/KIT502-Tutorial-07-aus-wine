@@ -34,7 +34,7 @@ Route::get('/jsonObject', function() {
    ]);
 });
 
-Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/products', [ProductsController::class, 'index']) -> name('products');
 
 Route::get('/products/{name}',
     [ProductsController::class, 'show']) -> where([

@@ -11,6 +11,6 @@
 <body>
     <h1>Products</h1>
     <p>This is a Products page</p>
-    <p>{{ $product }}</p>
+    <a href="{{route('products')}}"> Go to Product page</a>
 </body>
 </html>
