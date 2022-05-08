@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-                <a class="nav-link" href=" {{route('home')}}">Home</a>
+                <a class="nav-link {{ request() -> is('/') ? 'active' : '' }}" href=" {{route('home')}}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('products')}}">Products</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=" ({route('about')}}">About</a>
+            <a class="nav-link {{ request() -> is('about') ? 'active' : '' }}" href=" {{route('about')}}">About</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Login</a>
