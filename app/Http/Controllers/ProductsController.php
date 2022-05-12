@@ -3,33 +3,87 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductsController extends Controller
 {
-    public function index() {
-        $greeting = "G'day!";
-        $message = "Laravel if fun";
-        //return view ('products.index', compact('greeting', 'message'));
-        //return view('products.index') -> with('greeting', $greeting) -> with('message', $message);
-
-//        $data = [
-//            '1. Product' => 'MacBook',
-//            '2. Product' => 'iPad'
-//        ];
-//        return view('products.index', compact('data'));
-
-        print_r(route('products'));
-        return view('products.index');
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        // select everything from
+        $products = Product::all();
+        return view('products.index', [
+           'products'=>$products,
+        ]);
     }
 
-    public function show($name) {
-        $data = [
-          'Apple' => 'iPhone',
-          'Samsung' => 'galaxy'
-        ];
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('products.create');
+    }
 
-        return view('products.index', [
-            'product' => $data[$name] ?? 'Product ' .$name. ' dost not exit'
-        ]);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
