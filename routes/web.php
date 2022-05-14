@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\WinesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,6 @@ Route::get('/products/{name}',
     ]);
 
 Route::get('about', [MainPageController::class, 'about']) -> name('about');
+
+Route::get('wines', [WinesController::class, 'index']) -> name('wines');
+Route::post('wines', [WinesController::class, 'store']) -> name('wines');

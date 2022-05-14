@@ -1,0 +1,11 @@
+#homeWelcomeBox {
+    height: 70vh;
+}
+
+#homeWelcomePic {
+    height: inherit;
+}
+
+.img-detail {
+    height: 30vh;
+}
