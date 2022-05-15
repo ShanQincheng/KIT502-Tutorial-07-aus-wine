@@ -1,5 +1,5 @@
 <!-- Modal for Registration -->
-<form action="{{url('/wines')}}" method="POST">
+<form action="{{ url('/wines') }}" method="POST">
     @csrf
     <div class="modal fade" id="addNewWineModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
@@ -10,10 +10,10 @@
                 </div>
                 <div class="modal-body">
                     <label for="name-add-new-wine" class="mb-1">Wine Name</label>
-                    <input type="text" class="col-sm-12 form-control" id="add-new-wine-name" required>
+                    <input id="name-add-new-wine" name="name-add-new-wine" type="text" class="col-sm-12 form-control" required>
 
                     <label for="type-add-new-wine" class="col-sm-5 col-form-label">Type of Wine</label>
-                    <select id="type-add-new-wine" class="col-sm-12 form-select" aria-label="Default select example">
+                    <select id="type-add-new-wine" name="type-add-new-wine" class="col-sm-12 form-select" aria-label="Default select example">
                         <option selected>Select the wine type</option>
                         <option value="red-wine">Red Wine</option>
                         <option value="white-wine">White Wine</option>
@@ -21,13 +21,13 @@
                     </select>
 
                     <label for="qty-add-new-wine" class="col-sm-2 col-form-label">Quantity</label>
-                    <input type="text" class="col-sm-12 form-control" id="qty-add-new-wine" required>
+                    <input id="qty-add-new-wine" name="qty-add-new-wine" type="text" class="col-sm-12 form-control" required>
 
                     <label for="price-add-new-wine" class="col-sm-2 col-form-label">Price</label>
-                    <input type="text" class="col-sm-12 form-control" id="price-add-new-wine" required>
+                    <input id="price-add-new-wine" name="price-add-new-wine" type="text" class="col-sm-12 form-control" required>
 
                     <label for="region-add-new-wine" class="col-sm-5 col-form-label">Region of wine</label>
-                    <select id="region-add-new-wine" class="col-sm-12 form-select" aria-label="Default select example">
+                    <select id="region-add-new-wine" name="region-add-new-wine" class="col-sm-12 form-select" aria-label="Default select example">
                         <option selected>Select the region of wine</option>
                         <option value="SA">SA</option>
                         <option value="TAS">TAS</option>

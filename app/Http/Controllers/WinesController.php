@@ -25,14 +25,13 @@ class WinesController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
         $wine = Wines::make([
-           'ID' => $request->input('name-of-add-new-wine'),
-           'Name' => $request->input('name-of-add-new-wine'),
-           'Type' => $request->input('type-of-add-new-wine'),
-           'Quantity' => $request->input('qty-of-add-new-wine'),
-           'Price' => $request->input('price-of-add-new-wine'),
-           'Region' => $request->input('region-of-add-new-wine'),
+           'ID' => $request->input('name-add-new-wine'),
+           'Name' => $request->input('name-add-new-wine'),
+           'Type' => $request->input('type-add-new-wine'),
+           'Quantity' => $request->input('qty-add-new-wine'),
+           'Price' => $request->input('price-add-new-wine'),
+           'Region' => $request->input('region-add-new-wine'),
         ]);
         $wine->save();
 
