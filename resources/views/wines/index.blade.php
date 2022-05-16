@@ -52,15 +52,16 @@
             $.ajax({
                 type:'Delete',
                 url: '{{ url('/wines') }}' + '/' + wineID,
-                data: {ID: wineID}, //<-----this should be an object.
-                contentType:'application/json',  // <---add this
-                dataType: 'text',
+                // data: {ID: wineID}, //<-----this should be an object.
+                // contentType:'application/json',  // <---add this
+                // dataType: 'text',
                 success:function(msg) {
                     console.log(msg);
+                    location.reload();
                 },
 
                 error: function(xhr, status, error){
-                    console.log(xhr);
+                    alert(xhr);
                 }
             });
         }

@@ -38,10 +38,11 @@ class WinesController extends Controller
         return redirect('/wines');
     }
 
-    public function delete(Request $request) {
-        $wineIDtoDel = $request->input('ID');
-        $wineToDel = Wines::where('ID', '=', $wineIDtoDel)->get();
-        $wineToDel -> delete();
+    public function delete($toDelWineID) {
+        $toDelWine = Wines::where('ID', $toDelWineID);
+        $toDelWine->delete();
+
+        return json_encode("delete success");
     }
 
     public function show(Wines $wines)
