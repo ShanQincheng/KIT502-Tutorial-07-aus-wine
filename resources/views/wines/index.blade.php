@@ -18,14 +18,14 @@
             <tbody>
             @foreach($wines as $wine)
                 <tr>
-                    <td>{{$wine->Name}}</td>
+                    <td name="name-wine">{{$wine->Name}}</td>
                     <td>{{$wine->Type}}</td>
                     <td>{{$wine->Quantity}}</td>
                     <td>{{$wine->Price}}</td>
                     <td>{{$wine->Region}}</td>
                     <td>
                         <button type="button" class="btn btn-warning">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-danger" value="{{$wine->Name}}" onclick="deleteWine(this.value)">Delete</button>
                     </td>
                 </tr>
             @endforeach
@@ -39,3 +39,30 @@
         @include('wines.add-new-wine')
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        function deleteWine(wineID) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type:'Delete',
+                url: '{{ url('/wines') }}' + '/' + wineID,
+                data: {ID: wineID}, //<-----this should be an object.
+                contentType:'application/json',  // <---add this
+                dataType: 'text',
+                success:function(msg) {
+                    console.log(msg);
+                },
+
+                error: function(xhr, status, error){
+                    console.log(xhr);
+                }
+            });
+        }
+    </script>
+@endpush
