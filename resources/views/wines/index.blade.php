@@ -1,5 +1,11 @@
 @extends("layouts.app")
 @section("content")
+    @if(session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session()->get('error') }}
+        </div>
+    @endif
+    
     <div class="container">
         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addNewWineModal">
             Add a new wine</button>

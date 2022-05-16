@@ -20,6 +20,11 @@ class WinesController extends Controller
 
     public function store(Request $request)
     {
+        $exist = Wines::find($request->input('name-add-new-wine'));
+        if ($exist !== null) {
+            return back()->with('error', $request->input('name-add-new-wine').' already exist!');
+        }
+
         $wine = Wines::make([
            'ID' => $request->input('name-add-new-wine'),
            'Name' => $request->input('name-add-new-wine'),
