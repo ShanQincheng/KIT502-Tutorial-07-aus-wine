@@ -32,7 +32,6 @@ window.editWine = function (wineNo) {
   var wineQuality = document.getElementById("qty-wine-" + wineNo).textContent;
   var winePrice = document.getElementById("price-wine-" + wineNo).textContent;
   var wineRegion = document.getElementById("region-wine-" + wineNo).textContent;
-  alert(wineName);
   var wineNameModal = document.getElementById("name-edit-wine");
   wineNameModal.value = wineName;
   var wineTypeModal = document.getElementById("type-edit-wine");
