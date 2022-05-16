@@ -18,11 +18,6 @@ class WinesController extends Controller
         ]);
     }
 
-    public function create()
-    {
-
-    }
-
     public function store(Request $request)
     {
         $wine = Wines::make([
@@ -45,23 +40,16 @@ class WinesController extends Controller
         return json_encode("delete success");
     }
 
-    public function show(Wines $wines)
+    public function edit(Request $request)
     {
-        //
-    }
+        $wine = Wines::find($request->input('name-edit-wine'));
+        $wine->Type = $request->input('type-edit-wine');
+        $wine->Quantity = $request->input('qty-edit-wine');
+        $wine->Price = $request->input('price-edit-wine');
+        $wine->Region = $request->input('region-edit-wine');
 
-    public function edit(Wines $wines)
-    {
-        //
-    }
+        $wine->save();
 
-    public function update(Request $request, Wines $wines)
-    {
-        //
-    }
-
-    public function destroy(Wines $wines)
-    {
-
+        return redirect('/wines');
     }
 }

@@ -18,14 +18,16 @@
             <tbody>
             @foreach($wines as $wine)
                 <tr>
-                    <td name="name-wine">{{$wine->Name}}</td>
-                    <td>{{$wine->Type}}</td>
-                    <td>{{$wine->Quantity}}</td>
-                    <td>{{$wine->Price}}</td>
-                    <td>{{$wine->Region}}</td>
+                    <td id="name-wine-{{$loop->index}}" name="name-wine-{{$loop->index}}">{{$wine->Name}}</td>
+                    <td id="type-wine-{{$loop->index}}" name="type-wine-{{$loop->index}}">{{$wine->Type}}</td>
+                    <td id="qty-wine-{{$loop->index}}" name="qty-wine-{{$loop->index}}">{{$wine->Quantity}}</td>
+                    <td id="price-wine-{{$loop->index}}" name="price-wine-{{$loop->index}}">{{$wine->Price}}</td>
+                    <td id="region-wine-{{$loop->index}}" name="region-wine-{{$loop->index}}">{{$wine->Region}}</td>
                     <td>
-                        <button type="button" class="btn btn-warning">Edit</button>
-                        <button type="button" class="btn btn-danger" value="{{$wine->Name}}" onclick="deleteWine(this.value)">Delete</button>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editWineModal"
+                                value="{{$loop->index}}" onclick="editWine(this.value)">Edit</button>
+                        <button type="button" class="btn btn-danger"
+                                value="{{$wine->Name}}" onclick="deleteWine(this.value)">Delete</button>
                     </td>
                 </tr>
             @endforeach
@@ -37,33 +39,10 @@
     <!-- modal -->
     <div>
         @include('wines.add-new-wine')
+        @include('wines.edit-wine')
     </div>
 @endsection
 
 @push('scripts')
-    <script type="text/javascript">
-        function deleteWine(wineID) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type:'Delete',
-                url: '{{ url('/wines') }}' + '/' + wineID,
-                // data: {ID: wineID}, //<-----this should be an object.
-                // contentType:'application/json',  // <---add this
-                // dataType: 'text',
-                success:function(msg) {
-                    console.log(msg);
-                    location.reload();
-                },
-
-                error: function(xhr, status, error){
-                    alert(xhr);
-                }
-            });
-        }
-    </script>
+    <script src="{{ asset('js/wines-index.js') }}"></script>
 @endpush

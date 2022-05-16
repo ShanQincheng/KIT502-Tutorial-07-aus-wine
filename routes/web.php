@@ -46,4 +46,5 @@ Route::get('about', [MainPageController::class, 'about']) -> name('about');
 
 Route::get('/wines', [WinesController::class, 'index']) -> name('wines');
 Route::post('/wines', [WinesController::class, 'store']) -> name('store.wines');
+Route::post('/wines/{ID}', [WinesController::class, 'edit']) -> name('edit.wines');
 Route::delete('/wines/{ID}', [WinesController::class, 'delete']) -> name('delete.wines');
